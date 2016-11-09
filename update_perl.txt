@@ -1,0 +1,70 @@
+#!/usr/local/bin/perl
+
+$fname='/etc/passwd';
+
+open(PASSWD,$fname); 
+
+
+
+print "enter the command\n";
+$input = <STDIN>;
+
+if($input=~/^(cut)\s-d/)
+
+{
+
+
+if(substr($input,11,1) ne '-')
+
+{
+
+print "no range..\n";
+
+$x = substr($input,10,1);
+
+while(<PASSWD>){
+chomp;
+@s = split(':',);
+
+print "$s[$x]\n";
+#print "$s[0]\n";
+}
+
+    
+        
+        
+
+   
+                    
+ }
+
+else
+{
+if(substr($input,11,1)=='-')
+{
+
+print"range is present\n";
+$x1= substr($input,10,1);
+$y1= substr($input,12,1);
+
+
+while(<PASSWD>){
+chomp;
+@s = split(':',);
+
+#print "$s[$x]\n";
+
+for($i=$x1;$i<=$y1;$i++)
+{
+print "$s[$i]:";
+#print substr($s[$i],$x1,$y1);
+}
+}
+}
+}
+}
+       
+else
+{print "Notokay";} 
+
+close PASSWD;
